@@ -1,4 +1,4 @@
-# AWS Serverless IaC Platform
+# Enterprise AWS Serverless IaC Platform
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Terraform](https://img.shields.io/badge/Terraform-1.0+-purple?logo=terraform)](https://www.terraform.io/)
@@ -30,51 +30,13 @@ Enterprise serverless platform with AWS Config compliance & drift detection. Zer
 
 ## Project Structure
 ```
-aws-serverless-iac-platform/
+Enterprise-AWS-Serverless-IaC-Platform/
 ├── terraform/           # Infrastructure as Code
 ├── backend/             # Lambda functions
 ├── frontend/            # React application
 ├── scripts/             # Safety & automation
 ├── docs/                # Documentation
 └── .github/workflows/   # CI/CD pipelines
-```
-
-## Zero-Cost Validation Script
-
-```bash
-#!/bin/bash
-echo "ZERO-COST VALIDATION SCRIPT"
-echo "================================"
-date
-echo ""
-
-echo "Checking Terraform configuration..."
-cd terraform/environments/production
-terraform init -backend=false
-terraform validate
-terraform plan -lock=false
-
-echo ""
-echo "COST VERIFICATION:"
-echo "All resources are in PLANNED state only."
-echo "No AWS resources will be created."
-echo "Zero-cost guarantee: MAINTAINED"
-```
-
-## Git Commit Message
-
-```
-feat: initialize enterprise serverless platform structure
-
-- Set up complete Terraform module structure for serverless architecture
-- Create backend Lambda skeleton with SAM template for local testing  
-- Establish frontend React application structure
-- Implement safety-first zero-cost validation approach
-- Add comprehensive documentation structure
-- Include enhanced safety scripts for serverless cost control
-
-Architecture: Lambda + API Gateway + DynamoDB + Cognito + CloudFront
-Validation: Terraform plan only, SAM local testing, zero-cost guarantee
 ```
 
 ---
