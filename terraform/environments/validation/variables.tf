@@ -6,25 +6,6 @@
 # due to count = 0 safety mechanism in all modules.
 # ==============================================================================
 
-# Project Configuration
-variable "project_name" {
-  description = "Name prefix for all AWS resources"
-  type        = string
-  default     = "enterprise-serverless"
-}
-
-variable "environment" {
-  description = "Deployment environment (validation/development/staging/production)"
-  type        = string
-  default     = "validation"
-}
-
-variable "aws_region" {
-  description = "AWS region for all resources"
-  type        = string
-  default     = "us-east-1"
-}
-
 # API Gateway Configuration
 variable "api_gateway_name" {
   description = "Name of the API Gateway REST API"

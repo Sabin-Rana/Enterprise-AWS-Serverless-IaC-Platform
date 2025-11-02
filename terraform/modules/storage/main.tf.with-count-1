@@ -16,12 +16,12 @@ resource "aws_s3_bucket" "frontend" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ZERO-COST VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
-  #   - Shows in terraform plan as "will not be created"
+  # CURRENT: count = 1 (Temporary for Resource Count)
+  #   - Shows in terraform plan as resource count evidence
   #   - Demonstrates bucket configuration and website hosting setup
-  #   - Maintains absolute zero-cost guarantee
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates actual S3 bucket in AWS
   #   - Enables static website hosting and asset storage
   #   - Incurs S3 storage and request costs
@@ -29,7 +29,7 @@ resource "aws_s3_bucket" "frontend" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   bucket = "${var.project_name}-frontend-${var.environment}"
 
@@ -47,12 +47,12 @@ resource "aws_s3_bucket_versioning" "frontend" {
   # ============================================================================
   # DEPLOYMENT CONTROL - DATA PROTECTION VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates versioning configuration in terraform plan
   #   - Shows data protection strategy for production
-  #   - No additional S3 costs for versioning when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Enables versioning on the S3 bucket
   #   - Provides protection against accidental deletions/modifications
   #   - Incurs additional storage costs for object versions
@@ -60,7 +60,7 @@ resource "aws_s3_bucket_versioning" "frontend" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   bucket = aws_s3_bucket.frontend[0].id
 
@@ -77,12 +77,12 @@ resource "aws_s3_bucket_website_configuration" "frontend" {
   # ============================================================================
   # DEPLOYMENT CONTROL - HOSTING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows website configuration in terraform plan
   #   - Demonstrates index and error document setup
-  #   - No cost impact when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Configures S3 bucket for static website hosting
   #   - Enables direct web access to bucket contents
   #   - Included with S3 bucket (no additional cost)
@@ -90,7 +90,7 @@ resource "aws_s3_bucket_website_configuration" "frontend" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   bucket = aws_s3_bucket.frontend[0].id
 
@@ -111,12 +111,12 @@ resource "aws_s3_bucket_public_access_block" "frontend" {
   # ============================================================================
   # DEPLOYMENT CONTROL - SECURITY VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates security hardening in terraform plan
   #   - Shows public access blocking configuration
-  #   - Maintains security best practices validation
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Applies security controls to prevent public access
   #   - Ensures bucket security compliance
   #   - Included with S3 bucket (no additional cost)
@@ -124,7 +124,7 @@ resource "aws_s3_bucket_public_access_block" "frontend" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   bucket = aws_s3_bucket.frontend[0].id
 
@@ -142,12 +142,12 @@ resource "aws_cloudfront_distribution" "frontend" {
   # ============================================================================
   # DEPLOYMENT CONTROL - CDN VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows CloudFront configuration in terraform plan
   #   - Demonstrates origin setup, cache behaviors, and SSL settings
-  #   - No CloudFront distribution charges incurred
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates actual CloudFront distribution
   #   - Enables global content delivery with edge caching
   #   - Incurs CloudFront data transfer and request costs
@@ -155,7 +155,7 @@ resource "aws_cloudfront_distribution" "frontend" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   enabled             = true
   is_ipv6_enabled     = true

@@ -8,7 +8,7 @@
 # User Pool Information Outputs
 output "user_pool_id" {
   description = "ID of the Cognito User Pool"
-  value       = try(aws_cognito_user_pool.validation_example[0].id, "not-created-due-to-count-0")
+  value       = try(aws_cognito_user_pool.main[0].id, "not-created-due-to-count-0")
 }
 
 output "user_pool_arn" {

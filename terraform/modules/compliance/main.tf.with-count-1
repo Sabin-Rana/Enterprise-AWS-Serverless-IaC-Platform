@@ -16,12 +16,12 @@ resource "aws_config_configuration_recorder" "main" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ZERO-COST VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
-  #   - Shows in terraform plan as "will not be created"
+  # CURRENT: count = 1 (Temporary for Resource Count)
+  #   - Shows in terraform plan as resource count evidence
   #   - Demonstrates Config Recorder setup and role requirements
-  #   - Maintains absolute zero-cost guarantee
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates AWS Config Recorder for resource tracking
   #   - Enables continuous configuration monitoring
   #   - Incurs AWS Config pricing based on resources tracked
@@ -29,10 +29,10 @@ resource "aws_config_configuration_recorder" "main" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name     = "${var.project_name}-config-recorder-${var.environment}"
-  role_arn = "arn:aws:iam::123456789012:role/config-role"
+  role_arn = "arn:aws:iam::123456789012:role/config-role"  # Valid ARN format
 
   recording_group {
     all_supported                 = true
@@ -48,12 +48,12 @@ resource "aws_config_delivery_channel" "main" {
   # ============================================================================
   # DEPLOYMENT CONTROL - REPORTING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates delivery channel configuration in terraform plan
   #   - Shows S3 bucket and SNS topic integration for reports
-  #   - No AWS Config delivery costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates delivery channel for compliance reports
   #   - Enables configuration snapshot delivery to S3
   #   - Incurs additional S3 storage costs for snapshots
@@ -61,7 +61,7 @@ resource "aws_config_delivery_channel" "main" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name           = "${var.project_name}-delivery-channel-${var.environment}"
   s3_bucket_name = "config-bucket-${var.project_name}"
@@ -80,12 +80,12 @@ resource "aws_config_config_rule" "lambda_no_public_access" {
   # ============================================================================
   # DEPLOYMENT CONTROL - SECURITY COMPLIANCE VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows Config Rule configuration in terraform plan
   #   - Demonstrates Lambda function security compliance checking
-  #   - No Config Rule evaluation costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates Config Rule for Lambda function security
   #   - Continuously monitors for public function access
   #   - Incurs AWS Config rule evaluation costs
@@ -93,7 +93,7 @@ resource "aws_config_config_rule" "lambda_no_public_access" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name = "lambda-function-public-access-prohibited"
 
@@ -115,12 +115,12 @@ resource "aws_config_config_rule" "dynamodb_backup_enabled" {
   # ============================================================================
   # DEPLOYMENT CONTROL - DATA PROTECTION VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates backup compliance rule in terraform plan
   #   - Shows DynamoDB point-in-time recovery requirement
-  #   - No additional costs for rule configuration
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates Config Rule for DynamoDB backup compliance
   #   - Ensures point-in-time recovery is enabled
   #   - Incurs AWS Config rule evaluation costs
@@ -128,7 +128,7 @@ resource "aws_config_config_rule" "dynamodb_backup_enabled" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name = "dynamodb-pitr-enabled"
 
@@ -150,12 +150,12 @@ resource "aws_config_config_rule" "api_gw_logging_enabled" {
   # ============================================================================
   # DEPLOYMENT CONTROL - AUDIT TRAIL VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows API Gateway logging compliance in terraform plan
   #   - Demonstrates execution logging requirement
-  #   - Maintains compliance pattern validation
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates Config Rule for API Gateway logging
   #   - Ensures execution logging is enabled for audit trails
   #   - Incurs AWS Config rule evaluation costs
@@ -163,7 +163,7 @@ resource "aws_config_config_rule" "api_gw_logging_enabled" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name = "api-gw-execution-logging-enabled"
 
@@ -185,12 +185,12 @@ resource "aws_securityhub_account" "main" {
   # ============================================================================
   # DEPLOYMENT CONTROL - SECURITY CENTRALIZATION VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates Security Hub configuration in terraform plan
   #   - Shows centralized security findings aggregation
-  #   - No Security Hub costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Enables AWS Security Hub for the account
   #   - Aggregates security findings from various services
   #   - Incurs Security Hub pricing per finding
@@ -198,5 +198,5 @@ resource "aws_securityhub_account" "main" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 }

@@ -16,12 +16,12 @@ resource "aws_cloudwatch_event_rule" "resource_changes" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ZERO-COST VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
-  #   - Shows in terraform plan as "will not be created"
+  # CURRENT: count = 1 (Temporary for Resource Count)
+  #   - Shows in terraform plan as resource count evidence
   #   - Demonstrates event pattern for resource change detection
-  #   - Maintains absolute zero-cost guarantee
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates CloudWatch Event Rule for resource changes
   #   - Monitors AWS API calls for infrastructure modifications
   #   - No additional cost for basic Event Rules
@@ -29,7 +29,7 @@ resource "aws_cloudwatch_event_rule" "resource_changes" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name        = "${var.project_name}-resource-changes-${var.environment}"
   description = "Detects changes to serverless infrastructure resources"
@@ -53,12 +53,12 @@ resource "aws_cloudwatch_event_target" "drift_detection_lambda" {
   # ============================================================================
   # DEPLOYMENT CONTROL - AUTOMATION VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates event target configuration in terraform plan
   #   - Shows Lambda function integration for drift detection
-  #   - No event processing costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates event target pointing to drift detection Lambda
   #   - Triggers automated drift analysis on resource changes
   #   - Incurs Lambda invocation costs for drift detection
@@ -66,7 +66,7 @@ resource "aws_cloudwatch_event_target" "drift_detection_lambda" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   rule = aws_cloudwatch_event_rule.resource_changes[0].name
   arn  = "arn:aws:lambda:us-east-1:123456789012:function:${var.project_name}-drift-detection-${var.environment}"
@@ -80,12 +80,12 @@ resource "aws_lambda_function" "drift_detection" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ANALYSIS VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows drift detection Lambda configuration in terraform plan
   #   - Demonstrates analysis and reporting capabilities
-  #   - No Lambda compute costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates Lambda function for drift analysis
   #   - Compares current state with Terraform state
   #   - Incurs Lambda invocation and duration costs
@@ -93,7 +93,7 @@ resource "aws_lambda_function" "drift_detection" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   filename      = "drift-detection.zip"
   function_name = "${var.project_name}-drift-detection-${var.environment}"
@@ -126,12 +126,12 @@ resource "aws_sns_topic" "drift_alerts" {
   # ============================================================================
   # DEPLOYMENT CONTROL - NOTIFICATION VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates SNS topic configuration in terraform plan
   #   - Shows notification strategy for drift detection
-  #   - No SNS costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates SNS topic for drift notifications
   #   - Enables email/SMS alerts for infrastructure drift
   #   - Incurs SNS message delivery costs
@@ -139,7 +139,7 @@ resource "aws_sns_topic" "drift_alerts" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name = "${var.project_name}-drift-alerts-${var.environment}"
 
@@ -157,12 +157,12 @@ resource "aws_cloudwatch_metric_alarm" "high_drift_frequency" {
   # ============================================================================
   # DEPLOYMENT CONTROL - MONITORING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows drift frequency monitoring in terraform plan
   #   - Demonstrates proactive alerting for frequent changes
-  #   - No CloudWatch alarm costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates alarm for high drift detection frequency
   #   - Alerts on potential configuration management issues
   #   - No cost for basic CloudWatch Alarms
@@ -170,7 +170,7 @@ resource "aws_cloudwatch_metric_alarm" "high_drift_frequency" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   alarm_name          = "${var.project_name}-high-drift-frequency-${var.environment}"
   comparison_operator = "GreaterThanThreshold"

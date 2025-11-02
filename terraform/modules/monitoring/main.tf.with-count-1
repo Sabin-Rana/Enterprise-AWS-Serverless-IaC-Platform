@@ -16,12 +16,12 @@ resource "aws_cloudwatch_dashboard" "main" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ZERO-COST VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
-  #   - Shows in terraform plan as "will not be created"
+  # CURRENT: count = 1 (Temporary for Resource Count)
+  #   - Shows in terraform plan as resource count evidence
   #   - Demonstrates dashboard configuration and widget layout
-  #   - Maintains absolute zero-cost guarantee
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates actual CloudWatch Dashboard in AWS
   #   - Provides centralized view of all application metrics
   #   - No additional cost for CloudWatch Dashboards
@@ -29,7 +29,7 @@ resource "aws_cloudwatch_dashboard" "main" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   dashboard_name = "${var.project_name}-${var.environment}"
   
@@ -83,12 +83,12 @@ resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
   # ============================================================================
   # DEPLOYMENT CONTROL - ALERTING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates alarm configuration in terraform plan
   #   - Shows error threshold and notification setup
-  #   - No CloudWatch alarm costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates actual CloudWatch Alarm for Lambda errors
   #   - Enables proactive alerting for application issues
   #   - No cost for basic CloudWatch Alarms
@@ -96,7 +96,7 @@ resource "aws_cloudwatch_metric_alarm" "lambda_errors" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   alarm_name          = "${var.project_name}-lambda-errors-${var.environment}"
   comparison_operator = "GreaterThanThreshold"
@@ -122,12 +122,12 @@ resource "aws_cloudwatch_log_group" "api_gateway" {
   # ============================================================================
   # DEPLOYMENT CONTROL - LOGGING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Shows log group configuration in terraform plan
   #   - Demonstrates retention policy and log management
-  #   - No CloudWatch Logs ingestion costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates CloudWatch Log Group for API Gateway logs
   #   - Enables centralized logging and troubleshooting
   #   - Incurs CloudWatch Logs ingestion and storage costs
@@ -135,7 +135,7 @@ resource "aws_cloudwatch_log_group" "api_gateway" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
   name              = "/aws/apigateway/${var.project_name}-${var.environment}"
   retention_in_days = 30
@@ -154,12 +154,12 @@ resource "aws_xray_sampling_rule" "api_tracing" {
   # ============================================================================
   # DEPLOYMENT CONTROL - TRACING VALIDATION
   # ============================================================================
-  # CURRENT: count = 0 (Validation Mode)
+  # CURRENT: count = 1 (Temporary for Resource Count)
   #   - Demonstrates X-Ray configuration in terraform plan
   #   - Shows sampling rules and trace collection strategy
-  #   - No X-Ray costs when not deployed
+  #   - Will be changed back to count = 0 after screenshot
   #
-  # FOR DEPLOYMENT: Change to count = 1
+  # FOR DEPLOYMENT: Keep count = 1
   #   - Creates X-Ray sampling rule for API tracing
   #   - Enables distributed transaction monitoring
   #   - Incurs X-Ray trace analysis and storage costs
@@ -167,9 +167,9 @@ resource "aws_xray_sampling_rule" "api_tracing" {
   # VALIDATION VALUE: count = 0
   # DEPLOYMENT VALUE: count = 1
   # ============================================================================
-  count = 0
+  count = 1  # TEMPORARY FOR RESOURCE COUNT
 
-  rule_name      = "xray-trace-${var.environment}"
+  rule_name      = "api-tracing-${var.environment}"
   priority       = 9000
   version        = 1
   reservoir_size = 1

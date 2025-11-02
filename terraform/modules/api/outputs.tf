@@ -8,12 +8,12 @@
 # API Gateway Information Outputs
 output "api_gateway_id" {
   description = "ID of the API Gateway REST API"
-  value       = try(aws_api_gateway_rest_api.validation_example[0].id, "not-created-for-validation")
+  value       = try(aws_api_gateway_rest_api.main[0].id, "not-created-for-validation")
 }
 
 output "api_gateway_name" {
   description = "Name of the API Gateway REST API"
-  value       = try(aws_api_gateway_rest_api.validation_example[0].name, "not-created-for-validation")
+  value       = try(aws_api_gateway_rest_api.main[0].name, "not-created-for-validation")
 }
 
 # Lambda Function Information Outputs

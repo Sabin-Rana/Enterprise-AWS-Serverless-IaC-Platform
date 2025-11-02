@@ -18,7 +18,7 @@ output "projects_table_name" {
 
 output "validation_table_name" {
   description = "Name of the validation DynamoDB table"
-  value       = try(aws_dynamodb_table.validation_example[0].name, "not-created-due-to-count-0")
+  value       = "not-created-due-to-count-0"  # Removed invalid reference
 }
 
 # Table ARN Outputs
