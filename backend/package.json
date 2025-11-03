@@ -1,0 +1,25 @@
+{
+  "name": "serverless-backend",
+  "version": "1.0.0",
+  "description": "AWS Serverless Backend for Enterprise Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1467.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "keywords": [
+    "aws",
+    "serverless",
+    "lambda",
+    "dynamodb"
+  ],
+  "author": "Enterprise AWS Platform",
+  "license": "MIT"
+}
