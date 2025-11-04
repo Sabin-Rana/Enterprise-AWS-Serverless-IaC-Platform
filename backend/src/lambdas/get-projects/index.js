@@ -1,27 +1,32 @@
+// ==============================================================================
+// LAMBDA FUNCTION - GET PORTFOLIO PROJECTS
+// ==============================================================================
+// Enterprise Pattern: Portfolio Data API Endpoint
+// ==============================================================================
+
 const { successResponse, errorResponse } = require('../../shared/responses');
 
 exports.handler = async (event) => {
   try {
     console.log('Get Projects Event:', JSON.stringify(event, null, 2));
     
+    // Mock portfolio projects data
     const mockProjects = [
       {
         projectId: '1',
         name: 'Enterprise AWS Serverless Platform',
-        description: 'Complete serverless architecture with Terraform, Lambda, and React',
-        technologies: ['AWS Lambda', 'Terraform', 'React', 'DynamoDB'],
-        githubUrl: 'https://github.com/your-username/enterprise-aws-platform',
-        liveUrl: null,
-        status: 'In Progress'
+        description: 'Full-stack serverless application with Terraform IaC',
+        technologies: ['AWS', 'Terraform', 'React', 'Node.js'],
+        status: 'In Progress',
+        githubUrl: 'https://github.com/yourusername/aws-serverless-platform'
       },
       {
         projectId: '2',
-        name: 'Cloud Cost Optimization Dashboard',
-        description: 'Real-time AWS cost monitoring and optimization recommendations',
-        technologies: ['AWS Cost Explorer', 'Lambda', 'React', 'CloudWatch'],
-        githubUrl: 'https://github.com/your-username/cost-dashboard',
-        liveUrl: 'https://cost-dashboard.example.com',
-        status: 'Completed'
+        name: 'Cloud Migration Strategy',
+        description: 'Enterprise cloud migration from on-prem to AWS',
+        technologies: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+        status: 'Completed',
+        githubUrl: 'https://github.com/yourusername/cloud-migration'
       }
     ];
     

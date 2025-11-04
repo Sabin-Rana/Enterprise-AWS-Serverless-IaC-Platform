@@ -1,41 +1,65 @@
+// ==============================================================================
+// DYNAMODB CLIENT - DATABASE OPERATIONS
+// ==============================================================================
+// Enterprise Pattern: Centralized Database Operations
+// ==============================================================================
+
 const AWS = require('aws-sdk');
 
-// Use local DynamoDB for development, AWS for production
-const isLocal = process.env.IS_LOCAL || process.env.AWS_SAM_LOCAL;
-const dynamoDb = isLocal 
-  ? new AWS.DynamoDB.DocumentClient({
-      endpoint: 'http://localhost:8000',
-      region: 'localhost'
-    })
-  : new AWS.DynamoDB.DocumentClient();
+// Initialize DynamoDB client
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
-const scanTable = async (tableName) => {
-  const params = {
-    TableName: tableName
-  };
-
-  try {
-    const result = await dynamoDb.scan(params).promise();
-    return result.Items;
-  } catch (error) {
-    console.error(`Error scanning table ${tableName}:`, error);
-    throw error;
-  }
+// Scan table with optional parameters
+const scanTable = async (tableName, limit = 10) => {
+    const params = {
+        TableName: tableName,
+        Limit: limit
+    };
+    
+    try {
+        const result = await dynamoDB.scan(params).promise();
+        return result.Items;
+    } catch (error) {
+        console.error(`Error scanning table ${tableName}:`, error);
+        throw error;
+    }
 };
 
+// Get item by primary key
 const getItem = async (tableName, key) => {
-  const params = {
-    TableName: tableName,
-    Key: key
-  };
-
-  try {
-    const result = await dynamoDb.get(params).promise();
-    return result.Item;
-  } catch (error) {
-    console.error(`Error getting item from ${tableName}:`, error);
-    throw error;
-  }
+    const params = {
+        TableName: tableName,
+        Key: key
+    };
+    
+    try {
+        const result = await dynamoDB.get(params).promise();
+        return result.Item;
+    } catch (error) {
+        console.error(`Error getting item from ${tableName}:`, error);
+        throw error;
+    }
 };
 
-module.exports = { scanTable, getItem };
+// Put item into table
+const putItem = async (tableName, item) => {
+    const params = {
+        TableName: tableName,
+        Item: item
+    };
+    
+    try {
+        await dynamoDB.put(params).promise();
+        return item;
+    } catch (error) {
+        console.error(`Error putting item into ${tableName}:`, error);
+        throw error;
+    }
+};
+
+module.exports = {
+    dynamoDB,
+    scanTable,
+    getItem,
+    putItem
+};

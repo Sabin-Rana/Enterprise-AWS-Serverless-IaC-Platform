@@ -1,5 +1,10 @@
+// ==============================================================================
+// LAMBDA FUNCTION - GET BLOG POSTS
+// ==============================================================================
+// Enterprise Pattern: API Gateway Lambda Proxy Integration
+// ==============================================================================
+
 const { successResponse, errorResponse } = require('../../shared/responses');
-const { scanTable } = require('../../shared/dynamodb-client');
 
 exports.handler = async (event) => {
   try {

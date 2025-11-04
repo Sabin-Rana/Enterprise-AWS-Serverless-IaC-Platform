@@ -16,10 +16,10 @@
   },
   "keywords": [
     "aws",
-    "serverless",
+    "serverless", 
     "lambda",
     "dynamodb"
   ],
-  "author": "Enterprise AWS Platform",
+  "author": "Sabin Rana",
   "license": "MIT"
 }
