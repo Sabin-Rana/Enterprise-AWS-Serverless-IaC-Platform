@@ -1,5 +1,5 @@
 // API Service for communicating with backend Lambdas
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 // Generic fetch helper
 async function fetchAPI(endpoint, options = {}) {
@@ -28,7 +28,7 @@ async function fetchAPI(endpoint, options = {}) {
 // Blog API calls
 export const getPosts = async () => {
   // For local development, return mock data that matches our Lambda response
-  if (!process.env.REACT_APP_API_URL) {
+  if (!import.meta.env.VITE_API_URL) {
     console.log('Using mock data for posts');
     return {
       message: 'Posts retrieved successfully',
@@ -58,7 +58,7 @@ export const getPosts = async () => {
 // Portfolio API calls
 export const getProjects = async () => {
   // For local development, return mock data that matches our Lambda response
-  if (!process.env.REACT_APP_API_URL) {
+  if (!import.meta.env.VITE_API_URL) {
     console.log('Using mock data for projects');
     return {
       message: 'Projects retrieved successfully',
