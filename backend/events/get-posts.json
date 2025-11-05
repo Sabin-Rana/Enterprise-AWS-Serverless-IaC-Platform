@@ -1,0 +1,11 @@
+{
+  "httpMethod": "GET",
+  "path": "/posts",
+  "queryStringParameters": {
+    "limit": "5"
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": null
+}

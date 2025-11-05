@@ -1,0 +1,125 @@
+# ==============================================================================
+# SAM TEMPLATE - ENTERPRISE AWS SERVERLESS PLATFORM
+# ==============================================================================
+# Enterprise Pattern: Local Lambda Development & Testing
+# ==============================================================================
+# This template defines the backend architecture for local testing with SAM CLI
+# All resources are simulated locally - zero AWS costs incurred
+# ==============================================================================
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Enterprise AWS Serverless Platform - Backend Lambda Functions
+
+# ==============================================================================
+# PARAMETERS - ENVIRONMENT CONFIGURATION
+# ==============================================================================
+Parameters:
+  Environment:
+    Type: String
+    Default: validation
+    AllowedValues:
+      - validation
+      - production
+    Description: Deployment environment for zero-cost validation
+
+# ==============================================================================
+# GLOBAL CONFIGURATION - LAMBDA DEFAULTS
+# ==============================================================================
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: nodejs18.x
+    Environment:
+      Variables:
+        POSTS_TABLE: !Ref PostsTable
+        PROJECTS_TABLE: !Ref ProjectsTable
+        NODE_ENV: !Ref Environment
+
+# ==============================================================================
+# RESOURCES - LAMBDA FUNCTIONS & API ENDPOINTS
+# ==============================================================================
+Resources:
+
+  # ----------------------------------------------------------------------------
+  # GET POSTS LAMBDA - BLOG CONTENT RETRIEVAL
+  # ----------------------------------------------------------------------------
+  GetPostsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./                    # Entire backend directory for shared modules
+      Handler: src/lambdas/get-posts/index.handler
+      Description: Retrieves blog posts from DynamoDB
+      Events:
+        GetPosts:
+          Type: Api
+          Properties:
+            Path: /posts
+            Method: get
+
+  # ----------------------------------------------------------------------------
+  # GET PROJECTS LAMBDA - PORTFOLIO DATA RETRIEVAL  
+  # ----------------------------------------------------------------------------
+  GetProjectsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./                    # Entire backend directory for shared modules
+      Handler: src/lambdas/get-projects/index.handler
+      Description: Retrieves portfolio projects from DynamoDB
+      Events:
+        GetProjects:
+          Type: Api
+          Properties:
+            Path: /projects
+            Method: get
+
+  # ----------------------------------------------------------------------------
+  # CREATE POST LAMBDA - ADMIN BLOG POST CREATION
+  # ----------------------------------------------------------------------------
+  CreatePostFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./                    # Entire backend directory for shared modules
+      Handler: src/lambdas/create-post/index.handler
+      Description: Creates new blog posts (admin function)
+      Events:
+        CreatePost:
+          Type: Api
+          Properties:
+            Path: /posts
+            Method: post
+
+  # ----------------------------------------------------------------------------
+  # DYNAMODB TABLES - LOCAL SIMULATION
+  # ----------------------------------------------------------------------------
+  PostsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: posts-table
+      PrimaryKey:
+        Name: postId
+        Type: String
+
+  ProjectsTable:
+    Type: AWS::Serverless::SimpleTable  
+    Properties:
+      TableName: projects-table
+      PrimaryKey:
+        Name: projectId
+        Type: String
+
+# ==============================================================================
+# OUTPUTS - API ENDPOINT REFERENCES
+# ==============================================================================
+Outputs:
+  GetPostsApi:
+    Description: "API Gateway endpoint URL for Get Posts function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/posts"
+  
+  GetProjectsApi:
+    Description: "API Gateway endpoint URL for Get Projects function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/projects"
+    
+  CreatePostApi:
+    Description: "API Gateway endpoint URL for Create Post function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/posts"

@@ -1,0 +1,8 @@
+{
+  "httpMethod": "POST",
+  "path": "/posts",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"title\":\"Test Post\",\"content\":\"Test content\",\"author\":\"Test Author\"}"
+}
