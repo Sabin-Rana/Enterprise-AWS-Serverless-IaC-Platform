@@ -1,0 +1,87 @@
+---
+# ==============================================================================
+# GITHUB ACTIONS WORKFLOW - TERRAFORM VALIDATION
+# ==============================================================================
+# This workflow implements enterprise CI/CD patterns including:
+# - Zero-Cost Validation: Terraform plan only, no actual deployments
+# - Security-First: No AWS credentials required for validation
+# - Quality Gates: Automated validation on every push and PR
+# - Evidence Collection: Artifact upload for validation reports
+# ==============================================================================
+
+name: Terraform Validation
+
+# ==============================================================================
+# TRIGGER CONFIGURATION - ENTERPRISE STANDARDS
+# ==============================================================================
+# CURRENT: Validation-only triggers
+#   - Runs on push to main branch
+#   - Runs on pull requests to main branch
+#   - Maintains zero-cost safety guarantee
+#
+# FOR DEPLOYMENT: Add environment-specific triggers
+#   - Separate workflows for staging/production
+#   - Require manual approval for production
+#   - Include deployment steps with credentials
+#
+# VALIDATION MODE: Safe triggers only
+# DEPLOYMENT MODE: Environment-specific triggers
+# ==============================================================================
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform-validation:
+    name: Validate Terraform Configuration
+    runs-on: ubuntu-latest
+
+    # ==========================================================================
+    # EXECUTION STRATEGY - ZERO-COST SAFETY
+    # ==========================================================================
+    # CURRENT: Validation-only steps
+    #   - terraform init with backend=false (no state)
+    #   - terraform validate (syntax checking)
+    #   - terraform plan (configuration validation)
+    #   - No terraform apply (cost safety)
+    #
+    # FOR DEPLOYMENT: Add apply steps with conditions
+    #   - Environment-specific apply
+    #   - Manual approval gates
+    #   - State management
+    #
+    # VALIDATION: Safe execution only
+    # DEPLOYMENT: Conditional apply with approvals
+    # ==========================================================================
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init - Validation Environment
+        run: |
+          cd terraform/environments/validation
+          terraform init -backend=false
+
+      - name: Terraform Validate
+        run: |
+          cd terraform/environments/validation
+          terraform validate
+
+      - name: Terraform Plan - Zero Cost Validation
+        run: |
+          cd terraform/environments/validation
+          terraform plan
+
+      - name: Upload Validation Evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-validation-evidence
+          path: terraform/environments/validation/.terraform.lock.hcl
+          if-no-files-found: ignore
