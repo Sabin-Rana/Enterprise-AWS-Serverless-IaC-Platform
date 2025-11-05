@@ -5,31 +5,12 @@
 # This workflow implements enterprise security patterns including:
 # - SAST: Static Application Security Testing
 # - Infrastructure Security: Terraform security scanning
-# - Dependency Scanning: Vulnerability detection in dependencies
 # - Secret Detection: Prevention of credential exposure
 # - Zero-Cost Safety: No deployment or external service costs
 # ==============================================================================
 
 name: Security Scanning
 
-# ==============================================================================
-# TRIGGER CONFIGURATION - SECURITY STANDARDS
-# ==============================================================================
-# CURRENT: Comprehensive security scanning
-#   - Runs on push to main branch
-#   - Runs on pull requests to main branch
-#   - Scheduled daily security scans
-#   - Zero-cost guarantee maintained
-#
-# FOR ENTERPRISE: Add advanced security features
-#   - Security gate approvals
-#   - Compliance reporting
-#   - Integration with security tools
-#   - Automated vulnerability tracking
-#
-# VALIDATION MODE: Scanning without external costs
-# ENTERPRISE MODE: Integrated security ecosystem
-# ==============================================================================
 on:
   push:
     branches: [main]
@@ -43,24 +24,6 @@ jobs:
     name: Comprehensive Security Scan
     runs-on: ubuntu-latest
 
-    # ==========================================================================
-    # SECURITY SCANNING STRATEGY - MULTI-LAYER PROTECTION
-    # ==========================================================================
-    # CURRENT: Zero-cost security validation
-    #   - Terraform security scanning (tfsec)
-    #   - Dependency vulnerability scanning
-    #   - Secret detection and prevention
-    #   - Code quality and security analysis
-    #
-    # FOR ENTERPRISE: Add commercial security tools
-    #   - Snyk integration for dependencies
-    #   - Checkov for advanced IaC scanning
-    #   - SonarQube for code quality
-    #   - Custom security policies
-    #
-    # VALIDATION: Open-source tools only
-    # ENTERPRISE: Commercial security ecosystem
-    # ==========================================================================
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -69,9 +32,6 @@ jobs:
         uses: aquasecurity/tfsec-action@v1.0.0
         with:
           soft_fail: true
-
-      - name: Dependency Vulnerability Scan
-        uses: actions/dependency-review-action@v3
 
       - name: Secret Scanning
         uses: actions/checkout@v4

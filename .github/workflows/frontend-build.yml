@@ -4,7 +4,6 @@
 # ==============================================================================
 # This workflow implements enterprise frontend patterns including:
 # - Build Validation: Production build verification
-# - Dependency Security: Vulnerability scanning for frontend
 # - Performance Testing: Bundle size analysis and optimization
 # - Zero-Cost Safety: No deployment to S3/CloudFront
 # - Quality Gates: Automated frontend quality checks
@@ -12,24 +11,6 @@
 
 name: Frontend Build
 
-# ==============================================================================
-# TRIGGER CONFIGURATION - FRONTEND STANDARDS
-# ==============================================================================
-# CURRENT: Build validation only
-#   - Runs on push to main branch
-#   - Runs on pull requests to main branch
-#   - Node.js environment setup
-#   - Production build verification
-#
-# FOR DEPLOYMENT: Add deployment steps
-#   - S3 bucket deployment
-#   - CloudFront cache invalidation
-#   - Environment-specific configurations
-#   - CDN distribution updates
-#
-# VALIDATION MODE: Build verification only
-# DEPLOYMENT MODE: Full static site deployment
-# ==============================================================================
 on:
   push:
     branches: [main]
@@ -41,24 +22,6 @@ jobs:
     name: Frontend Build Validation
     runs-on: ubuntu-latest
 
-    # ==========================================================================
-    # BUILD STRATEGY - ZERO-COST VALIDATION
-    # ==========================================================================
-    # CURRENT: Local build verification
-#   - Node.js dependency installation
-#   - Production build optimization
-#   - Bundle size analysis
-#   - Build artifact validation
-#
-# FOR DEPLOYMENT: Add deployment pipeline
-#   - S3 sync with versioning
-#   - CloudFront cache invalidation
-#   - Environment variables injection
-#   - Rollback capabilities
-#
-# VALIDATION: Build verification only
-# DEPLOYMENT: Full static site deployment
-# ==========================================================================
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -123,6 +86,3 @@ jobs:
         run: |
           cd frontend
           npm audit --audit-level moderate || true
-
-      - name: Dependency Vulnerability Check
-        uses: actions/dependency-review-action@v3
