@@ -83,6 +83,7 @@ export const getProjects = async () => {
         }
       ],
       count: 2
+      
     };
   }
   
