@@ -7,10 +7,10 @@ Part of the "$0 Cloud Validation" series - Complete serverless architecture desi
 A comprehensive enterprise-grade AWS serverless platform demonstrating modern cloud architecture with AWS Config compliance, drift detection, and full-stack application readiness - all validated through strategic zero-cost methodology.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Sabin-Rana/Enterprise-AWS-Serverless-IaC-Platform)
-[![Terraform](https://img.shields.io/badge/Terraform-1.0+-purple?logo=terraform)](https://www.terraform.io/)
-[![AWS](https://img.shields.io/badge/AWS-Serverless-orange?logo=amazon-aws)](https://aws.amazon.com/)
-[![Architecture](https://img.shields.io/badge/Architecture-Serverless%20Blueprint-0052CC?logo=amazon-aws)]()
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Sabin-Rana/Enterprise-AWS-Serverless-IaC-Platform)
+[![Terraform](https://img.shields.io/badge/Terraform-1.0+-purple)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-Serverless-orange)](https://aws.amazon.com/)
+[![Architecture](https://img.shields.io/badge/Architecture-Serverless%20Blueprint-0052CC)]()
 [![Cost Validated](https://img.shields.io/badge/Cost-Validated%20%240-success)]()
 [![Status](https://img.shields.io/badge/Status-Infrastructure%20Complete-brightgreen)]()
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-4%20Workflows%20Green-brightgreen)]()
@@ -21,7 +21,7 @@ A comprehensive enterprise-grade AWS serverless platform demonstrating modern cl
 
 - [Project Metrics](#project-metrics)
 - [Architecture Diagram](#architecture-diagram)
-- [The Complete Cloud Engineering Journey](#the-complete-cloud-engineering-journey)
+- [Cloud Engineering Progression](#cloud-engineering-progression)
 - [Project Highlights](#project-highlights)
 - [Validation Evidence](#validation-evidence)
 - [Architecture Overview](#architecture-overview)
@@ -44,7 +44,7 @@ A comprehensive enterprise-grade AWS serverless platform demonstrating modern cl
 | CI/CD Workflows | 4 Active + 4 Disabled |
 | Validation Evidence | 43 Screenshots |
 | Development Cost | $0 |
-| Services Integrated | 8+ AWS Services |
+| Services Integrated | 11 AWS Services |
 
 ### Project Validation
 
@@ -70,7 +70,7 @@ The methodology proves that comprehensive cloud engineering skills can be develo
 
 ---
 
-## The Complete Cloud Engineering Journey
+## Cloud Engineering Progression
 
 This enterprise serverless platform represents the culmination of a structured learning path covering both traditional and modern AWS architectures, from manual implementation to advanced automation.
 
@@ -121,16 +121,16 @@ This enterprise serverless platform represents the culmination of a structured l
 ### Evolution Timeline
 
 ```
-MANUAL FOUNDATIONS     IaC LEARNING      AUTOMATED ENTERPRISE
+MANUAL FOUNDATIONS      IaC LEARNING       AUTOMATED ENTERPRISE
 ─────────────────────────────────────────────────────────────────────
-│                      │                 │
-├─ Manual 3-Tier       ├─ Terraform      ├─ Terraform 3-Tier
-│  (Traditional)       │  Labs           │  (57 resources)
-│                      │                 │
-├─ Manual Serverless   │                 ├─ Enterprise Serverless
-│  (Student App)       │                 │  (Current - 30 resources)
-│                      │                 │
-└─ Console Mastery     └─ IaC Foundation └─ Deployment-Ready
+       │                      │                      │
+       ├─ Manual 3-Tier       ├─ Terraform           ├─ Terraform 3-Tier
+       │  (Traditional)       │  Labs                │  (57 resources)
+       │                      │                      │
+       ├─ Manual Serverless   │                      ├─ Enterprise Serverless
+       │  (Student App)       │                      │  (Current - 30 resources)
+       │                      │                      │
+       └─ Console Mastery     └─ IaC Foundation      └─ Deployment-Ready
 ```
 
 ### Architecture Comparison
@@ -172,21 +172,41 @@ A comprehensive Terraform implementation of AWS serverless architecture, profess
 
 <div align="center">
 
-### 30-Resource Architecture Validated
+### 30-Resource Infrastructure Validated
 ![Architecture Validation](./docs/screenshots-organized/terraform-plans/terraform-plan-30-resources-success.png)
-*Complete serverless infrastructure planned and validated with zero deployment costs*
+*Complete 30-resource serverless infrastructure planned and validated with zero costs*
 
-### CI/CD Pipeline Operational  
-![CI/CD Success](./docs/screenshots-organized/cicd-workflows/github-actions-ALL-GREEN.png)
-*4 validation workflows executing successfully with security scanning and testing*
+### Infrastructure Validation Success
+![Terraform Validate](./docs/screenshots-organized/terraform-plans/terraform-validate-success.png)
+*All 7 Terraform modules validated successfully with zero configuration errors*
 
-### Lambda Functions Tested
-![Lambda Testing](./docs/screenshots-organized/sam-cli-validation/sam-local-invoke-success.png)
-*Backend APIs validated locally with SAM CLI and comprehensive testing*
-
-### Zero-Cost Validation Confirmed
+### Zero-Cost Safety Confirmed
 ![Cost Validation](./docs/screenshots-organized/terraform-plans/validation-environment-zero-cost-success.png)
-*Validation environment proving architecture without AWS resource creation*
+*Validation environment proves complete architecture without any AWS resource creation*
+
+### CI/CD Pipeline - All Green
+![CI/CD Success](./docs/screenshots-organized/cicd-workflows/github-actions-ALL-GREEN.png)
+*All 4 validation workflows executing successfully with automated security scanning*
+
+### Backend API - Local Testing Success
+![Lambda Testing](./docs/screenshots-organized/sam-cli-validation/sam-local-invoke-success.png)
+*Lambda functions tested locally with SAM CLI - GET posts endpoint working*
+
+### Backend API - Create Post Success
+![Create Post](./docs/screenshots-organized/sam-cli-validation/sam-create-post-success.png)
+*POST endpoint tested locally - blog post creation functionality verified*
+
+### Backend API - Projects Endpoint Success
+![Get Projects](./docs/screenshots-organized/sam-cli-validation/sam-get-projects-success.png)
+*GET projects endpoint tested locally - portfolio data retrieval working*
+
+### Lambda Unit Tests Passing
+![Unit Tests](./docs/screenshots-organized/backend-lambda-validation/lambda-unit-tests-get-posts-passing.png)
+*Lambda function unit tests executing successfully with proper test coverage*
+
+### Complete Test Suite Success
+![All Tests](./docs/screenshots-organized/backend-lambda-validation/both-lambdas-tests-passing.png)
+*All Lambda function unit tests passing - comprehensive backend validation*
 
 ### Safety Mechanisms Active
 ![Safety Proof](./docs/screenshots-organized/cicd-workflows/cicd-safety-mechanism-proof.png)
@@ -282,7 +302,6 @@ Real-time infrastructure change monitoring with CloudWatch Events. Scheduled Ter
 - Serverless Deployment: Lambda function deployment
 - Frontend Deployment: S3 sync and CloudFront invalidation
 - Terraform Apply: AWS resource creation
-- Environment Promotion: Cross-environment deployments
 
 ### Zero-Cost Validation Approach
 
@@ -310,6 +329,7 @@ resource "aws_lambda_function" "api" {
 ```
 
 **Validation Benefits:**
+
 - 30 AWS resources visible in Terraform plan output
 - Professional documentation with plan evidence
 - GitHub Actions validation without costs
@@ -319,6 +339,7 @@ resource "aws_lambda_function" "api" {
 ### Validation Scripts Suite
 
 5 Safety and Automation Scripts:
+
 - `cost-validator.sh` - Comprehensive cost auditing and free-tier validation
 - `safety-check.sh` - Pre-validation safety checks and environment verification
 - `analyzer.sh` - Terraform plan analysis and resource counting
@@ -330,12 +351,13 @@ resource "aws_lambda_function" "api" {
 ## Technical Stack
 
 ### Infrastructure and DevOps
+
 - **Terraform** - Infrastructure as Code managing 30 AWS resources across 7 modules
 - **GitHub Actions** - CI/CD pipeline with 4 active validation workflows
 - **AWS SAM CLI** - Local Lambda testing and application validation
-- **Docker** - Containerization for local development and testing
 
 ### AWS Services
+
 - **Compute**: AWS Lambda, Lambda Layers
 - **API Management**: API Gateway (REST), WebSocket support
 - **Database**: DynamoDB with GSIs and auto-scaling
@@ -346,6 +368,7 @@ resource "aws_lambda_function" "api" {
 - **Networking**: Route53, ACM
 
 ### Application Stack
+
 - **Frontend**: React 18, Vite 5.4, Modern JavaScript, CSS Modules
 - **Backend**: Node.js Lambda functions, JWT authentication, DynamoDB client
 - **Testing**: Jest, React Testing Library, SAM local testing
@@ -384,16 +407,13 @@ Test the full-stack application locally:
 cd backend
 npm install
 npm test
-sam local invoke GetPostsFunction --event events/get-posts.json
+sam local invoke GetPostsFunction
 
 # Frontend validation
 cd frontend  
 npm install
 npm run build
 npm run dev
-
-# Local DynamoDB testing
-java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
 ```
 
 ### Safety Verification
@@ -485,19 +505,30 @@ This project demonstrates enterprise-level skills in:
 
 ## Troubleshooting Journey
 
-**View Complete Troubleshooting Evidence** in `/docs/screenshots-organized/`
+Complete Local Development Validation Evidence in `/docs/screenshots-organized/`
 
-Seven phases of real engineering challenges documented with 43+ screenshots and solutions:
+### Infrastructure Validation
 
-1. **Phase 1**: Environment restructuring and multi-strategy implementation
-2. **Phase 2**: Terraform configuration errors across 5 categories (15+ issues)
-3. **Phase 3**: Cross-module reference resolution and dependency management
-4. **Phase 4**: AWS service constraints and naming limitations
-5. **Phase 5**: CI/CD workflow optimization and safety implementation
-6. **Phase 6**: Local development environment setup and testing
-7. **Phase 7**: Frontend-backend integration and validation
+- **Terraform Configuration**: 15+ configuration errors resolved across 7 modules including duplicate variables, invalid ARN formats, and resource reference mismatches
+- **Cross-Module Dependencies**: Reference resolution and variable management between API, database, and authentication modules
+- **AWS Service Constraints**: X-Ray naming limitations (32-character rule) and service-specific parameter validation
+- **Provider Configuration**: Environment-specific AWS provider setup and validation
 
-Comprehensive evidence showing real problems and solutions from hands-on cloud engineering experience.
+### CI/CD Pipeline Development & Validation
+
+- **YAML Syntax Validation**: Local lint testing for GitHub Actions workflows before pushing to repository
+- **Workflow Optimization**: Pre-push syntax validation, dependency resolution, and error correction
+- **Safety Implementation**: Deployment workflow verification and validation-only execution patterns
+- **Pipeline Testing**: Local workflow testing and GitHub Actions integration validation
+
+### Application Development
+
+- **Frontend Development**: React Vite configuration, JSX resolution, and development server setup
+- **Backend Testing**: Lambda function unit tests, SAM CLI local invocation, and event simulation
+- **Integration Testing**: Frontend-backend API connection validation and CORS configuration
+- **Local Development**: Complete local environment setup with hot-reload and testing workflows
+
+Comprehensive evidence showing real-world cloud engineering challenges and solutions from local development and testing, demonstrating systematic problem-solving approach.
 
 ---
 
@@ -514,15 +545,14 @@ Free to use, modify, and distribute. Commercial use permitted. Attribution requi
 **Sabin Rana**
 
 - **GitHub**: [Sabin-Rana](https://github.com/Sabin-Rana)
-- **LinkedIn**: [Sabin Rana](https://www.linkedin.com/in/sabin-rana)
-- **Blog**: [Hashnode](https://hashnode.com/@sabinrana)
+- **LinkedIn**: [Sabin Rana](https://www.linkedin.com/in/sabin-rana/)
+- **Blog**: [Hashnode](https://sabinrana.hashnode.dev/)
 - **Certifications**: [Credly Profile](https://www.credly.com/users/sabin-rana)
 
 ---
 
 ## If This Helps You
 
-⭐**Star this repository** if you find the serverless architecture and zero-cost validation approach valuable for your cloud learning journey.
+⭐ Star this repository if you find the serverless architecture and zero-cost validation approach valuable for your cloud learning journey.
 
-**Share it** with others who want to learn modern cloud infrastructure without financial risk.
-
+Share it with others who want to learn modern cloud infrastructure without financial risk.
