@@ -596,8 +596,8 @@ Free to use, modify, and distribute.Attribution required.
 **Sabin Rana**
 
 - **GitHub**: [Sabin-Rana](https://github.com/Sabin-Rana)
-- **LinkedIn**: [Sabin Rana](https://www.linkedin.com/in/sabin-rana/)
-- **Blog**: [Hashnode](https://sabinrana.hashnode.dev/)
+- **LinkedIn**:  [Sabin Rana](https://www.linkedin.com/in/sabin-rana-377729153/)
+- **Blog**: [Hashnode](https://sabin-codeops.hashnode.dev/)
 - **Certifications**: [Credly Profile](https://www.credly.com/users/sabin-rana)
 
 ---
